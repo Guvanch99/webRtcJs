@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+    <title>PeerToPeer</title>
+</head>
+<body>
+<div id="videos">
+    <video class="video-player" id="user-1" autoplay playsinline></video>
+    <video class="video-player" id="user-2" autoplay playsinline></video>
+</div>
+
+<div id="controls">
+    <div class="control-container" id="camera-btn">
+        <img src="icons/camera.png" alt="camera">
+    </div>
+    <div class="control-container" id="mic-btn">
+        <img src="icons/mic.png" alt="camera">
+    </div>
+    <div class="control-container" id="leave-btn">
+        <img src="icons/phone.png" alt="camera">
+    </div>
+
+</div>
+<script defer src="http://localhost:5001/socket.io/socket.io.js"></script>
+<script defer src="main.js"></script>
+</body>
+</html>

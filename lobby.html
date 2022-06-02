@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="lobby.css">
+    <title>lobby</title>
+</head>
+<body>
+<main id="lobby-container">
+    <div id="form-container">
+        <div id="form__container__header">
+            <p>Create or Join Room</p>
+        </div>
+        <div id="form__content__wrapper">
+            <form id="join-room">
+                <input type="text" name="invite_link" required>
+                <input type="submit" value="JoinRoom">
+            </form>
+        </div>
+    </div>
+</main>
+
+
+<script>
+    let form =document.getElementById('join-room')
+
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        let inviteCode=e.target.invite_link.value
+        fetch("http://localhost:5001/lobby",
+            {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({code: inviteCode})
+            })
+            .then(()=>{
+                console.log('I am here')
+                window.location=`index.html?room=${inviteCode}`
+            })
+            .catch((error)=>console.log('error', error))
+    })
+</script>
+</body>
+</html>
